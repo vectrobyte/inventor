@@ -12,7 +12,7 @@ const ModelBuilder: React.FC<ModelBuilderProps> = () => {
     <div className="model-builder-page w-full">
       <div className="-mx-4 flex">
         {models.map((model, key) => (
-          <div key={`${model.id}-${key}`} className="p-4 w-full md:w-1/2 lg:w-1/4">
+          <div key={`${model.id}-${key}`} className="p-4 w-[400px]">
             <ModelCard model={model} onUpdate={updateModel} />
           </div>
         ))}
