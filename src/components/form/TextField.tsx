@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from 'react';
 
-import { FormControl } from '../../@types/form';
+import { FormControl } from '../../@types';
 
 type TextFieldProps = FormControl<string>;
 
