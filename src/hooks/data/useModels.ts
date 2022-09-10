@@ -1,4 +1,5 @@
 import { Model } from '../../@types';
+import { uid } from '../../common/helpers';
 import { STORE_ACTIONS } from '../../context/store';
 import { useStore } from '../useStore';
 
@@ -9,8 +10,16 @@ export const useModels = () => {
     dispatch({ type: STORE_ACTIONS.setModels, payload: updatedModels });
   };
 
-  const addModel = (model: Model) => {
-    setModels([...models, model]);
+  const addNewModel = () => {
+    setModels([
+      ...models,
+      {
+        id: uid(),
+        title: '',
+        title_field: '',
+        fields: [],
+      },
+    ]);
   };
 
   const updateModel = (updatedModel: Model) => {
@@ -23,7 +32,7 @@ export const useModels = () => {
 
   return {
     models,
-    addModel,
+    addNewModel,
     updateModel,
     dropModel,
   };
