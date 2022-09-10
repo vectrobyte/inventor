@@ -14,9 +14,9 @@ const ModelBuilder: React.FC<ModelBuilderProps> = () => {
 
   return (
     <div className="model-builder-page w-full mb-40">
-      <div className="-mx-4 flex flex-wrap">
+      <div className="-mx-8 flex flex-wrap">
         {models.map((model, key) => (
-          <div key={`${model.id}-${key}`} className="p-4 w-[400px]">
+          <div key={`${model.id}-${key}`} className="p-8 w-[450px]">
             <ModelCard model={model} onUpdate={updateModel} onDelete={dropModel} />
           </div>
         ))}
