@@ -5,9 +5,5 @@ type ProvidersProps = {
 };
 
 export const Providers: React.FC<ProvidersProps> = ({ children }) => {
-  return (
-    <>
-      {children}
-    </>
-  );
+  return <>{children}</>;
 };
