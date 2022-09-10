@@ -1,4 +1,6 @@
-import { Model } from '../../@types';
+import { useCallback, useMemo } from 'react';
+
+import { Model, Uid } from '../../@types';
 import { uid } from '../../common/helpers';
 import { STORE_ACTIONS } from '../../context/store';
 import { useLocalStorage } from '../useLocalStorage';
@@ -7,6 +9,21 @@ import { useStore } from '../useStore';
 export const useModels = () => {
   const [{ models }, dispatch] = useStore();
   const [, setCachedModels] = useLocalStorage<Model[]>('models', []);
+
+  const modelIds = useMemo(() => models.map((model) => model.id), [models]);
+
+  const getModelById = useCallback(
+    (modelId: Uid) => {
+      const model = models.find(({ id }) => id === modelId);
+
+      if (!model) {
+        throw new Error('Product not found!');
+      }
+
+      return model;
+    },
+    [models]
+  );
 
   const setModels = (updatedModels: Model[]) => {
     dispatch({ type: STORE_ACTIONS.setModels, payload: updatedModels });
@@ -27,6 +44,7 @@ export const useModels = () => {
             type: 'TEXT',
           },
         ],
+        products: [],
       },
     ]);
   };
@@ -41,6 +59,8 @@ export const useModels = () => {
 
   return {
     models,
+    modelIds,
+    getModelById,
     addNewModel,
     updateModel,
     dropModel,
