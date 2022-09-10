@@ -43,7 +43,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ model, product, onUpdate, onD
             key={`${fieldKey}-${key}`}
             fields={model.fields}
             fieldKey={fieldKey}
-            value={formData[key]}
+            value={formData[fieldKey]}
             onChange={(val) => handleUpdateField(fieldKey, val)}
           />
         ))}

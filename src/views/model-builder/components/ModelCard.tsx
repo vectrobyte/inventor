@@ -19,9 +19,9 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, onDelete }) => {
   const titleOptions = useMemo<SelectOption[]>(
     () =>
       fields
-        .map(({ name, type }) => ({
+        .map(({ name, id }) => ({
           label: name,
-          value: type,
+          value: id,
         }))
         .filter(({ label }) => label && label.length),
     [fields]
