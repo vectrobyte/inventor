@@ -82,7 +82,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                   <MenuItem key={key} href={`/model/${model.id}`} title={model.title} />
                 )
             )}
-            <MenuItem href="/model-builder" title="Menu Builder" />
+            <MenuItem href="/model-builder" title="Model Builder" />
           </ul>
         </div>
       </div>
