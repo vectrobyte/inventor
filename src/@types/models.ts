@@ -17,6 +17,7 @@ export type Product = {
 export type Model = {
   id: number;
   type: string;
+  title: string;
   title_field: Field['id'];
   fields: Field[];
   products?: Product[];
