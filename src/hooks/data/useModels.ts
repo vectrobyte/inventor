@@ -30,7 +30,7 @@ export const useModels = () => {
       model.products.map((product) => ({ ...product, model }))
     );
 
-    return ([] as Product[]).concat(...modelProductArr);
+    return ([] as Product[]).concat(...modelProductArr).sort((a, b) => a.created_at - b.created_at);
   }, [models]);
 
   const setModels = (updatedModels: Model[]) => {
