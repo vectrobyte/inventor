@@ -23,7 +23,7 @@ export const FIELD_OPTIONS: FieldOption[] = [
   },
   {
     label: 'Number',
-    value: 'TEXT',
+    value: 'NUMBER',
   },
   {
     label: 'Checkbox',
@@ -33,7 +33,9 @@ export const FIELD_OPTIONS: FieldOption[] = [
 
 const FieldInput: React.FC<FieldInputProps> = ({ field, onUpdate, onDelete }) => {
   const title = useMemo(() => {
-    const found = FIELD_OPTIONS.find((option) => option.value === field.type);
+    const found = FIELD_OPTIONS.find((option) => {
+      return option.value === field.type;
+    });
 
     return ((found && found.label) as string) || '';
   }, [field.type]);
@@ -60,20 +62,23 @@ const FieldInput: React.FC<FieldInputProps> = ({ field, onUpdate, onDelete }) =>
           value={field.name}
           placeholder="Field Name"
           className="flex-shrink-0 z-10 py-2.5 px-4 text-sm font-medium text-gray-700 border border-gray-300 rounded-l focus:ring-4 focus:outline-none focus:ring-gray-100"
-          style={{ width: 'calc(100% - 110px)' }}
+          style={{ width: 'calc(100% - 115px)' }}
           onChange={handleFieldNameChange}
         />
         <select
-          value={field.type}
-          className="bg-gray-50 w-[110px] border border-gray-300 text-gray-900 text-sm rounded-r border-l-gray-100 border-l-2 block w-full p-2.5 truncate"
+          defaultValue={field.type}
+          className="bg-gray-700 w-[115px] border border-gray-300 text-white text-sm rounded-r border-l-gray-600 border-l-2 border-r-4 border-r-gray-700 block w-full p-2.5 truncate"
           title={title}
           onChange={handleFieldTypeChange}
         >
-          {FIELD_OPTIONS.map((option, key) => (
-            <option key={`${option.value}-${key}`} value={option.value}>
-              {option.label}
-            </option>
-          ))}
+          {FIELD_OPTIONS.map(
+            (option, key) =>
+              option.label && (
+                <option key={`${option.value}-${key}`} value={option.value}>
+                  {option.label}
+                </option>
+              )
+          )}
         </select>
       </div>
 

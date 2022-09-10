@@ -3,10 +3,10 @@ import React, { useMemo } from 'react';
 import { Field, FieldType, Model } from '../../../@types';
 import { uid } from '../../../common/helpers';
 import CrossButton from '../../../components/CrossButton';
-import Dropdown from '../../../components/Dropdown';
 import Select, { SelectOption } from '../../../components/form/Select';
 import TextField from '../../../components/form/TextField';
-import FieldInput, { FIELD_OPTIONS } from './FieldInput';
+import AddFieldDropdown from './AddFieldDropdown';
+import FieldInput from './FieldInput';
 
 type ModelCardProps = React.HTMLAttributes<HTMLElement> & {
   model: Model;
@@ -19,10 +19,12 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, onUpdate, onDelete }) => {
 
   const titleOptions = useMemo<SelectOption[]>(
     () =>
-      fields.map((field) => ({
-        label: field.name,
-        value: field.type,
-      })),
+      fields
+        .map(({ name, type }) => ({
+          label: name,
+          value: type,
+        }))
+        .filter(({ label }) => label && label.length),
     [fields]
   );
 
@@ -74,7 +76,7 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, onUpdate, onDelete }) => {
         <Select
           label="Title Field"
           value={model.title_field}
-          placeholder="Select a title field"
+          placeholder="Select title field"
           options={titleOptions}
           onChange={(val) => handleChange('title_field', val)}
         />
@@ -90,12 +92,7 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, onUpdate, onDelete }) => {
           />
         ))}
 
-        <Dropdown
-          label="Add Field"
-          options={FIELD_OPTIONS}
-          optionMapper={(option: any) => option.label}
-          onSelect={handleAddField}
-        />
+        <AddFieldDropdown onSelect={handleAddField} />
       </form>
     </div>
   );

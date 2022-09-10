@@ -16,8 +16,14 @@ export const useModels = () => {
       {
         id: uid(),
         title: '',
-        title_field: '',
-        fields: [],
+        title_field: 'TEXT',
+        fields: [
+          {
+            id: uid(),
+            name: 'Title',
+            type: 'TEXT',
+          },
+        ],
       },
     ]);
   };

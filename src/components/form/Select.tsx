@@ -3,7 +3,7 @@ import React, { ChangeEvent } from 'react';
 import { FormControl } from '../../@types';
 
 export type SelectOption<T = any> = {
-  label: React.ReactNode;
+  label: string;
   value: T;
 };
 

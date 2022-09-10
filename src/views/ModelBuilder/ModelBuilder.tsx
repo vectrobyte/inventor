@@ -20,6 +20,9 @@ const ModelBuilder: React.FC<ModelBuilderProps> = () => {
             <ModelCard model={model} onUpdate={updateModel} onDelete={dropModel} />
           </div>
         ))}
+        <div className="p-8">
+          <pre className="p-2 bg-gray-100">{JSON.stringify(models, null, 2)}</pre>
+        </div>
       </div>
 
       <button
