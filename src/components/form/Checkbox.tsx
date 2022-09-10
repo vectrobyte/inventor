@@ -12,7 +12,7 @@ const Checkbox: React.FC<CheckboxProps> = ({ label, value, onChange }) => {
   };
 
   return (
-    <label className="flex items-center mb-4">
+    <label className="block flex items-center mb-4">
       <input
         type="checkbox"
         checked={value}
