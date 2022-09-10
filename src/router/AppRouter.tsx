@@ -2,9 +2,9 @@ import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import AppLayout from '../layouts/app-layout/AppLayout';
-import Home from '../views/Home/Home';
-import Model from '../views/Model/Model';
-import ModelBuilder from '../views/ModelBuilder/ModelBuilder';
+import Home from '../views/home/Home';
+import ModelBuilder from '../views/model-builder/ModelBuilder';
+import ModelProducts from '../views/model-products/ModelProducts';
 
 type AppRouterProps = React.HTMLAttributes<HTMLElement>;
 
@@ -21,7 +21,7 @@ const AppRouter: React.FC<AppRouterProps> = () => {
               <Route path="/home" element={<Home />} />
 
               <Route path="/model/" element={<Navigate replace to="/home" />} />
-              <Route path="/model/:modelId" element={<Model />} />
+              <Route path="/model/:modelId" element={<ModelProducts />} />
 
               <Route path="/model-builder" element={<ModelBuilder />} />
             </Routes>
