@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link, matchPath, useLocation } from 'react-router-dom';
 
-import webbeeIcon from '../../../../assets/webbee.png';
-import { useIsDesktop } from '../../../../hooks/useIsDesktop';
-import { useStore } from '../../../../hooks/useStore';
+import webbeeIcon from '../../../assets/webbee.png';
+import { useModels } from '../../../hooks/data/useModels';
+import { useIsDesktop } from '../../../hooks/useIsDesktop';
 
 type NavbarProps = React.HTMLAttributes<HTMLElement>;
 
@@ -26,7 +26,7 @@ const MenuItem: React.FC<{ href: string; title: string }> = ({ href, title }) =>
 
 const Navbar: React.FC<NavbarProps> = () => {
   const [menuOpen, setMenuOpen] = useState(true);
-  const [{ models }] = useStore();
+  const { models } = useModels();
 
   const isDesktop = useIsDesktop();
 

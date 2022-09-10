@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import Navbar from './components/navbar/Navbar';
+import Navbar from './components/Navbar';
 
 type Props = React.HTMLAttributes<HTMLElement>;
 
