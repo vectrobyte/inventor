@@ -1,3 +1,11 @@
-export type Store = {};
+import { Model, Product } from '../../@types';
 
-export const DEFAULT_STORE: Store = {};
+export type Store = {
+  models: Model[];
+  products: Product[];
+};
+
+export const DEFAULT_STORE: Store = {
+  models: [],
+  products: [],
+};
