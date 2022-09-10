@@ -1,7 +1,9 @@
 export type FieldType = 'TEXT' | 'NUMBER' | 'DATE' | 'CHECKBOX';
 
+export type Uid = string;
+
 export type Field = {
-  id: string;
+  id: Uid;
   name: string;
   type: FieldType;
 };
@@ -12,12 +14,12 @@ export type ProductField = {
 };
 
 export type Product = {
-  id: string;
+  id: Uid;
   data: ProductField[];
 };
 
 export type Model = {
-  id: number;
+  id: Uid;
   title: string;
   title_field: Field['id'];
   fields: Field[];
