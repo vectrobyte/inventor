@@ -15,7 +15,9 @@ export type ProductField = {
 
 export type Product = {
   id: Uid;
-  data: ProductField[];
+  data: {
+    [key: Field['id']]: unknown;
+  };
 };
 
 export type Model = {
@@ -23,5 +25,5 @@ export type Model = {
   title: string;
   title_field: Field['id'];
   fields: Field[];
-  products?: Product[];
+  products: Product[];
 };
