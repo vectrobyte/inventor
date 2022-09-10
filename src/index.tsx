@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 
+import ScrollToTop from './components/ScrollToTop';
 import { Providers } from './context';
 import reportWebVitals from './reportWebVitals';
 import AppRouter from './router/AppRouter';
@@ -14,6 +15,7 @@ root.render(
   <React.StrictMode>
     <HashRouter basename="">
       <Providers>
+        <ScrollToTop />
         <AppRouter />
       </Providers>
     </HashRouter>
