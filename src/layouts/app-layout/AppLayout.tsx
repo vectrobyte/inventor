@@ -9,7 +9,7 @@ const AppLayout: React.FC<Props> = ({ children }) => {
     <div className="app-layout">
       <Navbar />
 
-      {children}
+      <div className="container mx-auto">{children}</div>
     </div>
   );
 };
