@@ -14,13 +14,11 @@ type ProductCardProps = React.HTMLAttributes<HTMLElement> & {
 
 const ProductCard: React.FC<ProductCardProps> = ({ model, product, onUpdate, onDelete }) => {
   const formData = useMemo(() => {
-    const defaultState = generateDefaultProductFields(model);
-
     return {
-      ...defaultState,
+      ...generateDefaultProductFields(model),
       ...product.formData,
     };
-  }, [model.fields, product.formData]);
+  }, [model, product.formData]);
 
   const handleUpdateField = (key: Field['id'], value: any) => {
     onUpdate({
