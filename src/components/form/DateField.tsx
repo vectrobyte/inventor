@@ -1,10 +1,8 @@
 import React, { ChangeEvent } from 'react';
 
-type DateFieldProps = {
-  label: string;
-  value: string | undefined;
-  onChange(val: string): void;
-};
+import { FormControl } from '../../@types';
+
+type DateFieldProps = FormControl<string>;
 
 const DateField: React.FC<DateFieldProps> = ({ label, value, onChange }) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -12,7 +10,7 @@ const DateField: React.FC<DateFieldProps> = ({ label, value, onChange }) => {
   };
 
   return (
-    <label className="block mb-4">
+    <label className="block">
       <span className="block text-gray-700 text-sm font-medium mb-2 mb-2 select-none">{label}</span>
       <input
         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"

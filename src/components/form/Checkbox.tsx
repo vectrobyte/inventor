@@ -1,10 +1,8 @@
 import React, { ChangeEvent } from 'react';
 
-type CheckboxProps = {
-  label: string;
-  value: boolean;
-  onChange(val: boolean): void;
-};
+import { FormControl } from '../../@types';
+
+type CheckboxProps = FormControl<boolean>;
 
 const Checkbox: React.FC<CheckboxProps> = ({ label, value, onChange }) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -12,7 +10,7 @@ const Checkbox: React.FC<CheckboxProps> = ({ label, value, onChange }) => {
   };
 
   return (
-    <label className="block flex items-center mb-4">
+    <label className="block flex items-center">
       <input
         type="checkbox"
         checked={value}

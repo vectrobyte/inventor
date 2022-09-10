@@ -1,12 +1,12 @@
 export type Field = {
   id: string;
   name: string;
-  data_type: unknown;
+  type: 'TEXT' | 'NUMBER' | 'DATE' | 'CHECKBOX';
 };
 
 export type ProductField = {
   field_id: Field['id'];
-  value: Field['data_type'];
+  value: unknown;
 };
 
 export type Product = {
@@ -16,7 +16,6 @@ export type Product = {
 
 export type Model = {
   id: number;
-  type: string;
   title: string;
   title_field: Field['id'];
   fields: Field[];
