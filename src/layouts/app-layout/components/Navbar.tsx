@@ -76,9 +76,12 @@ const Navbar: React.FC<NavbarProps> = () => {
         >
           <ul className="flex flex-col p-4 mt-4 rounded-lg border md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white bg-gray-800 md:bg-gray-900 border-gray-700">
             <MenuItem href="/home" title="Home" />
-            {models.map((model, key) => (
-              <MenuItem key={key} href={`/model/${model.id}`} title={model.title} />
-            ))}
+            {models.map(
+              (model, key) =>
+                model.title && (
+                  <MenuItem key={key} href={`/model/${model.id}`} title={model.title} />
+                )
+            )}
             <MenuItem href="/model-builder" title="Menu Builder" />
           </ul>
         </div>
