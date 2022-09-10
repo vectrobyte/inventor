@@ -1,4 +1,6 @@
-export type FieldType = 'TEXT' | 'NUMBER' | 'DATE' | 'CHECKBOX';
+export const FIELD_TYPES = ['TEXT', 'NUMBER', 'DATE', 'CHECKBOX'] as const;
+
+export type FieldType = typeof FIELD_TYPES[number];
 
 export type Uid = string;
 
@@ -15,7 +17,7 @@ export type ProductField = {
 
 export type Product = {
   id: Uid;
-  data: {
+  formData: {
     [key: Field['id']]: unknown;
   };
 };
