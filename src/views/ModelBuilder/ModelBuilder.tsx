@@ -1,5 +1,6 @@
 import React from 'react';
 
+import AddButton from '../../components/buttons/AddButton';
 import { useModels } from '../../hooks/data/useModels';
 import ModelCard from './components/ModelCard';
 
@@ -25,13 +26,7 @@ const ModelBuilder: React.FC<ModelBuilderProps> = () => {
         </div>
       </div>
 
-      <button
-        type="button"
-        className="fixed bottom-10 right-10 text-white h-20 w-20 rounded-full bg-gray-700 hover:bg-gray-800 focus:bg-gray-700 font-light rounded text-5xl flex items-center justify-center"
-        onClick={handleAddNewModel}
-      >
-        <span className="relative bottom-1">+</span>
-      </button>
+      <AddButton onClick={handleAddNewModel} />
     </div>
   );
 };
