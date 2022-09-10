@@ -20,6 +20,7 @@ const Home: React.FC<HomeProps> = () => {
         {
           id: uid(),
           formData: generateDefaultProductFields(model),
+          created_at: Date.now(),
         },
       ],
     });

@@ -53,6 +53,7 @@ export const useModels = () => {
           },
         ],
         products: [],
+        created_at: Date.now(),
       },
     ]);
   };

@@ -31,6 +31,7 @@ export const useProducts = (model: Model) => {
       {
         id: uid(),
         formData: generateDefaultProductFields(model),
+        created_at: Date.now(),
       },
     ]);
   };

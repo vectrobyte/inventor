@@ -15,6 +15,7 @@ export type Product = {
   formData: {
     [key: Field['id']]: unknown;
   };
+  created_at: number;
   model?: Model;
 };
 
@@ -24,4 +25,5 @@ export type Model = {
   title_field: Field['id'];
   fields: Field[];
   products: Product[];
+  created_at: number;
 };
