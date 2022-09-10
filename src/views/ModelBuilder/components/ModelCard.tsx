@@ -49,6 +49,13 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, onUpdate }) => {
     );
   };
 
+  const handleDeleteField = (updatedField: Field) => {
+    handleChange(
+      'fields',
+      fields.filter((field) => updatedField.id !== field.id)
+    );
+  };
+
   return (
     <div className="bg-white rounded-lg border border-gray-200 shadow-md">
       <div className="bg-gray-800 py-4 md:px-6 lg:px-8 min-h-[56px] rounded-t-lg text-white">
@@ -72,7 +79,12 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, onUpdate }) => {
         <p>Fields</p>
 
         {fields.map((field, key) => (
-          <FieldInput key={`${field.id}-${key}`} field={field} onUpdate={handleUpdateField} />
+          <FieldInput
+            key={`${field.id}-${key}`}
+            field={field}
+            onUpdate={handleUpdateField}
+            onDelete={() => handleDeleteField(field)}
+          />
         ))}
 
         <Dropdown
