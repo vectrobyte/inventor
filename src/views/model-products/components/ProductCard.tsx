@@ -2,17 +2,17 @@ import React, { useMemo } from 'react';
 
 import { Field, Model, Product } from '../../../@types';
 import CrossButton from '../../../components/buttons/CrossButton';
-import { generateDefaultProductFields } from '../../../hooks/data/useProducts';
+import { generateDefaultProductFields, useProducts } from '../../../hooks/data/useProducts';
 import InputRenderer from './InputRenderer';
 
 type ProductCardProps = React.HTMLAttributes<HTMLElement> & {
   model: Model;
   product: Product;
-  onUpdate(product: Product): void;
-  onDelete(): void;
 };
 
-const ProductCard: React.FC<ProductCardProps> = ({ model, product, onUpdate, onDelete }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ model, product }) => {
+  const { updateProduct, dropProduct } = useProducts(model);
+
   const formData = useMemo(() => {
     return {
       ...generateDefaultProductFields(model),
@@ -21,7 +21,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ model, product, onUpdate, onD
   }, [model, product.formData]);
 
   const handleUpdateField = (key: Field['id'], value: any) => {
-    onUpdate({
+    updateProduct({
       ...product,
       formData: {
         ...product.formData,
@@ -34,7 +34,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ model, product, onUpdate, onD
     <div className="bg-white rounded-lg border border-gray-200 shadow-md">
       <div className="bg-gray-800 py-4 md:px-6 lg:px-8 min-h-[56px] rounded-t-lg text-white flex items-center justify-between">
         <span>{`${model.title} - ${formData[model.title_field] || 'No Title'}`}</span>
-        <CrossButton onClick={onDelete} />
+        <CrossButton onClick={() => dropProduct(product)} />
       </div>
 
       <form className="space-y-4 p-4 md:p-6 lg:p-8" action="#">

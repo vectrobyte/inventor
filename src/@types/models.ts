@@ -10,16 +10,12 @@ export type Field = {
   type: FieldType;
 };
 
-export type ProductField = {
-  field_id: Field['id'];
-  value: unknown;
-};
-
 export type Product = {
   id: Uid;
   formData: {
     [key: Field['id']]: unknown;
   };
+  model?: Model;
 };
 
 export type Model = {

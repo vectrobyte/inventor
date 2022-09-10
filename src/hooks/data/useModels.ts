@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react';
 
-import { Model, Uid } from '../../@types';
+import { Model, Product, Uid } from '../../@types';
 import { uid } from '../../common/helpers';
 import { STORE_ACTIONS } from '../../context/store';
 import { useLocalStorage } from '../useLocalStorage';
@@ -24,6 +24,14 @@ export const useModels = () => {
     },
     [models]
   );
+
+  const allProducts = useMemo(() => {
+    const modelProductArr = models.map((model) =>
+      model.products.map((product) => ({ ...product, model }))
+    );
+
+    return ([] as Product[]).concat(...modelProductArr);
+  }, [models]);
 
   const setModels = (updatedModels: Model[]) => {
     dispatch({ type: STORE_ACTIONS.setModels, payload: updatedModels });
@@ -61,6 +69,7 @@ export const useModels = () => {
     models,
     modelIds,
     getModelById,
+    allProducts,
     addNewModel,
     updateModel,
     dropModel,

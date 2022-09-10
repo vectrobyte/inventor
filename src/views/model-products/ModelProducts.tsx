@@ -17,7 +17,7 @@ const ModelProducts: React.FC<ModelProducts> = () => {
 
   const model = getModelById(params.modelId as string);
 
-  const { products, addNewProduct, updateProduct, dropProduct } = useProducts(model);
+  const { products, addNewProduct } = useProducts(model);
 
   if (!modelIds.includes(params.modelId as string)) {
     navigate('/home');
@@ -30,12 +30,7 @@ const ModelProducts: React.FC<ModelProducts> = () => {
       <div className="-mx-8 flex flex-wrap">
         {products.map((product, key) => (
           <div key={`${product.id}-${key}`} className="p-8 w-[450px]">
-            <ProductCard
-              model={model}
-              product={product}
-              onUpdate={updateProduct}
-              onDelete={() => dropProduct(product)}
-            />
+            <ProductCard model={model} product={product} />
           </div>
         ))}
       </div>
