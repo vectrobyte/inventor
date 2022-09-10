@@ -2,7 +2,7 @@ import { Model } from '../../@types';
 import { STORE_ACTIONS } from '../../context/store';
 import { useStore } from '../useStore';
 
-export function useModels() {
+export const useModels = () => {
   const [{ models }, dispatch] = useStore();
 
   const setModels = (updatedModels: Model[]) => {
@@ -27,4 +27,4 @@ export function useModels() {
     updateModel,
     dropModel,
   };
-}
+};
