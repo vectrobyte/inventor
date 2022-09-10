@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import Button from './Button';
+import Button from './buttons/Button';
 
 type DropdownProps = {
   label: string;

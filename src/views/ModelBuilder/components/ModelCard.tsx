@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 
 import { Field, FieldType, Model } from '../../../@types';
 import { uid } from '../../../common/helpers';
-import CrossButton from '../../../components/CrossButton';
+import CrossButton from '../../../components/buttons/CrossButton';
 import Select, { SelectOption } from '../../../components/form/Select';
 import TextField from '../../../components/form/TextField';
 import AddFieldDropdown from './AddFieldDropdown';
