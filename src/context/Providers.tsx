@@ -1,9 +1,9 @@
 import React from 'react';
 
-type ProvidersProps = {
-  children?: React.ReactNode;
-};
+import { StoreProvider } from './store/StoreProvider';
+
+type ProvidersProps = React.HTMLAttributes<HTMLElement>;
 
 export const Providers: React.FC<ProvidersProps> = ({ children }) => {
-  return <>{children}</>;
+  return <StoreProvider>{children}</StoreProvider>;
 };
