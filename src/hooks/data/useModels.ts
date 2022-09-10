@@ -1,13 +1,16 @@
 import { Model } from '../../@types';
 import { uid } from '../../common/helpers';
 import { STORE_ACTIONS } from '../../context/store';
+import { useLocalStorage } from '../useLocalStorage';
 import { useStore } from '../useStore';
 
 export const useModels = () => {
   const [{ models }, dispatch] = useStore();
+  const [, setCachedModels] = useLocalStorage<Model[]>('models', []);
 
   const setModels = (updatedModels: Model[]) => {
     dispatch({ type: STORE_ACTIONS.setModels, payload: updatedModels });
+    setCachedModels(updatedModels);
   };
 
   const addNewModel = () => {
