@@ -12,18 +12,16 @@ const DateField: React.FC<DateFieldProps> = ({ label, value, onChange }) => {
   };
 
   return (
-    <div className="mb-4">
-      <label className="block text-gray-700 text-sm font-bold mb-2">
-        <span>{label}</span>
-        <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="date"
-          value={value}
-          placeholder="DD/MM/YY"
-          onChange={handleChange}
-        />
-      </label>
-    </div>
+    <label className="mb-4">
+      <span className="block text-gray-700 text-sm font-medium mb-2 mb-2 select-none">{label}</span>
+      <input
+        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        type="date"
+        value={value}
+        placeholder="DD/MM/YY"
+        onChange={handleChange}
+      />
+    </label>
   );
 };
 
