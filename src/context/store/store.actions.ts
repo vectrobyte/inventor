@@ -1,4 +1,4 @@
 export enum STORE_ACTIONS {
   setModels = 'SET_MODELS',
-  setProducts = 'SET_PRODUCTS',
+  setIsStoreLoaded = 'SET_IS_STORE_LOADED',
 }

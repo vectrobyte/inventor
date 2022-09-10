@@ -10,10 +10,10 @@ export const StoreReducer = (state: Store, { type, payload }: Action<STORE_ACTIO
         models: payload,
       };
     }
-    case STORE_ACTIONS.setProducts: {
+    case STORE_ACTIONS.setIsStoreLoaded: {
       return {
         ...state,
-        products: payload,
+        isStoreLoaded: payload,
       };
     }
     default:

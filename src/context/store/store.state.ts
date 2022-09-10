@@ -1,11 +1,11 @@
-import { Model, Product } from '../../@types';
+import { Model } from '../../@types';
 
 export type Store = {
   models: Model[];
-  products: Product[];
+  isStoreLoaded: boolean;
 };
 
 export const DEFAULT_STORE: Store = {
   models: [],
-  products: [],
+  isStoreLoaded: false,
 };
