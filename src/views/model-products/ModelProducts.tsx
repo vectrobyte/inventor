@@ -38,9 +38,6 @@ const ModelProducts: React.FC<ModelProducts> = () => {
             />
           </div>
         ))}
-        <div className="p-8">
-          <pre className="p-2 bg-gray-100">{JSON.stringify(products, null, 2)}</pre>
-        </div>
       </div>
 
       <AddButton onClick={addNewProduct} />
