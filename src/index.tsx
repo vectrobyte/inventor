@@ -3,7 +3,7 @@ import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { Providers } from './context/Providers';
+import { Providers } from './context';
 import reportWebVitals from './reportWebVitals';
 import AppRouter from './router/AppRouter';
 
