@@ -12,8 +12,6 @@ const MenuItem: React.FC<{ href: string; title: string }> = ({ href, title }) =>
 
   const isActive = matchPath(href, location.pathname);
 
-  console.log({ href, pathname: location.pathname, isActive });
-
   return (
     <li>
       <Link
