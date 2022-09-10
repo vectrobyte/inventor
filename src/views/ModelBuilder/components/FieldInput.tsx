@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useMemo } from 'react';
 
-import { Field } from '../../../@types';
+import { Field, FieldType } from '../../../@types';
 import { SelectOption } from '../../../components/form/Select';
 
 type FieldInputProps = {
@@ -8,7 +8,9 @@ type FieldInputProps = {
   onUpdate(field: Field): void;
 };
 
-const FIELD_OPTIONS: SelectOption<Field['type']>[] = [
+export type FieldOption = SelectOption<FieldType>;
+
+export const FIELD_OPTIONS: FieldOption[] = [
   {
     label: 'Text',
     value: 'TEXT',
@@ -44,7 +46,7 @@ const FieldInput: React.FC<FieldInputProps> = ({ field, onUpdate }) => {
   const handleFieldTypeChange = (e: ChangeEvent<HTMLSelectElement>) => {
     onUpdate({
       ...field,
-      type: e.target.value as Field['type'],
+      type: e.target.value as FieldType,
     });
   };
 
@@ -54,7 +56,7 @@ const FieldInput: React.FC<FieldInputProps> = ({ field, onUpdate }) => {
         type="text"
         value={field.name}
         placeholder="Field Name"
-        className="flex-shrink-0 z-10 py-2.5 px-4 text-sm font-medium text-gray-500 border border-gray-300 rounded-l focus:ring-4 focus:outline-none focus:ring-gray-100"
+        className="flex-shrink-0 z-10 py-2.5 px-4 text-sm font-medium text-gray-700 border border-gray-300 rounded-l focus:ring-4 focus:outline-none focus:ring-gray-100"
         style={{ width: 'calc(100% - 110px)' }}
         onChange={handleFieldNameChange}
       />
