@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import Button from './Button';
+
 type DropdownProps = {
   label: string;
   options: any[];
@@ -17,11 +19,7 @@ const Dropdown: React.FC<DropdownProps> = ({ label, options, optionMapper, onSel
 
   return (
     <div className="relative">
-      <button
-        type="button"
-        className="text-white w-full bg-gray-700 hover:bg-gray-800 focus:bg-gray-700 font-medium rounded text-sm px-4 py-2.5"
-        onClick={() => setExpanded(!expanded)}
-      >
+      <Button onClick={() => setExpanded(!expanded)}>
         <div className="w-full flex items-center justify-between">
           <span>{label}</span>
           <svg
@@ -34,7 +32,7 @@ const Dropdown: React.FC<DropdownProps> = ({ label, options, optionMapper, onSel
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
           </svg>
         </div>
-      </button>
+      </Button>
       <div
         className={`z-10 border absolute w-full bg-white rounded divide-y divide-gray-100 shadow-lg ${
           expanded ? 'block' : 'hidden'
