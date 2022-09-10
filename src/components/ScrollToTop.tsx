@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 type ScrollToTop = React.HTMLAttributes<HTMLElement>;
 
-function ScrollToTop() {
+const ScrollToTop = () => {
   const location = useLocation();
 
   React.useEffect(() => {
@@ -11,6 +11,6 @@ function ScrollToTop() {
   }, [location]);
 
   return null;
-}
+};
 
 export default ScrollToTop;
