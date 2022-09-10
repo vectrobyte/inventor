@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 
 import { Field, FieldType, Model } from '../../../@types';
 import { uid } from '../../../common/helpers';
+import CrossButton from '../../../components/CrossButton';
 import Dropdown from '../../../components/Dropdown';
 import Select, { SelectOption } from '../../../components/form/Select';
 import TextField from '../../../components/form/TextField';
@@ -10,9 +11,10 @@ import FieldInput, { FIELD_OPTIONS } from './FieldInput';
 type ModelCardProps = React.HTMLAttributes<HTMLElement> & {
   model: Model;
   onUpdate(model: Model): void;
+  onDelete(model: Model): void;
 };
 
-const ModelCard: React.FC<ModelCardProps> = ({ model, onUpdate }) => {
+const ModelCard: React.FC<ModelCardProps> = ({ model, onUpdate, onDelete }) => {
   const { fields } = model;
 
   const titleOptions = useMemo<SelectOption[]>(
@@ -58,8 +60,9 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, onUpdate }) => {
 
   return (
     <div className="bg-white rounded-lg border border-gray-200 shadow-md">
-      <div className="bg-gray-800 py-4 md:px-6 lg:px-8 min-h-[56px] rounded-t-lg text-white">
-        {model.title}
+      <div className="bg-gray-800 py-4 md:px-6 lg:px-8 min-h-[56px] rounded-t-lg text-white flex items-center justify-between">
+        <span>{model.title}</span>
+        <CrossButton onClick={() => onDelete(model)} />
       </div>
 
       <form className="space-y-4 p-4 md:p-6 lg:p-8" action="#">
