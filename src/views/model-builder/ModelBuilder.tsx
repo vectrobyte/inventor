@@ -7,7 +7,7 @@ import ModelCard from './components/ModelCard';
 type ModelBuilderProps = React.HTMLAttributes<HTMLElement>;
 
 const ModelBuilder: React.FC<ModelBuilderProps> = () => {
-  const { models, updateModel, dropModel, addNewModel } = useModels();
+  const { models, dropModel, addNewModel } = useModels();
 
   const handleAddNewModel = () => {
     addNewModel();
@@ -18,7 +18,7 @@ const ModelBuilder: React.FC<ModelBuilderProps> = () => {
       <div className="-mx-8 flex flex-wrap">
         {models.map((model, key) => (
           <div key={`${model.id}-${key}`} className="p-8 w-[450px]">
-            <ModelCard model={model} onUpdate={updateModel} onDelete={dropModel} />
+            <ModelCard model={model} onDelete={dropModel} />
           </div>
         ))}
       </div>

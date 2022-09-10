@@ -1,21 +1,20 @@
 import React, { useMemo } from 'react';
 
-import { Field, FieldType, Model } from '../../../@types';
-import { uid } from '../../../common/helpers';
+import { Model } from '../../../@types';
 import CrossButton from '../../../components/buttons/CrossButton';
 import Select, { SelectOption } from '../../../components/form/Select';
 import TextField from '../../../components/form/TextField';
+import { useModelFields } from '../../../hooks/data/useModelFields';
 import AddFieldDropdown from './AddFieldDropdown';
 import FieldInput from './FieldInput';
 
 type ModelCardProps = React.HTMLAttributes<HTMLElement> & {
   model: Model;
-  onUpdate(model: Model): void;
   onDelete(model: Model): void;
 };
 
-const ModelCard: React.FC<ModelCardProps> = ({ model, onUpdate, onDelete }) => {
-  const { fields } = model;
+const ModelCard: React.FC<ModelCardProps> = ({ model, onDelete }) => {
+  const { fields, addField, updateField, deleteField, handleUpdateModel } = useModelFields(model);
 
   const titleOptions = useMemo<SelectOption[]>(
     () =>
@@ -28,38 +27,6 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, onUpdate, onDelete }) => {
     [fields]
   );
 
-  const handleChange = (key: keyof Model, value: any) => {
-    onUpdate({
-      ...model,
-      [key]: value,
-    });
-  };
-
-  const handleAddField = (type: FieldType) => {
-    handleChange('fields', [
-      ...fields,
-      {
-        id: uid(),
-        name: '',
-        type,
-      },
-    ]);
-  };
-
-  const handleUpdateField = (updatedField: Field) => {
-    handleChange(
-      'fields',
-      fields.map((field) => (updatedField.id === field.id ? updatedField : field))
-    );
-  };
-
-  const handleDeleteField = (updatedField: Field) => {
-    handleChange(
-      'fields',
-      fields.filter((field) => updatedField.id !== field.id)
-    );
-  };
-
   return (
     <div className="bg-white rounded-lg border border-gray-200 shadow-md">
       <div className="bg-gray-800 py-4 md:px-6 lg:px-8 min-h-[56px] rounded-t-lg text-white flex items-center justify-between">
@@ -71,14 +38,14 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, onUpdate, onDelete }) => {
         <TextField
           label="Model Name"
           value={model.title}
-          onChange={(val) => handleChange('title', val)}
+          onChange={(val) => handleUpdateModel('title', val)}
         />
         <Select
           label="Title Field"
           value={model.title_field}
           placeholder="Select title field"
           options={titleOptions}
-          onChange={(val) => handleChange('title_field', val)}
+          onChange={(val) => handleUpdateModel('title_field', val)}
         />
 
         <p>Fields</p>
@@ -87,12 +54,12 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, onUpdate, onDelete }) => {
           <FieldInput
             key={`${field.id}-${key}`}
             field={field}
-            onUpdate={handleUpdateField}
-            onDelete={() => handleDeleteField(field)}
+            onUpdate={updateField}
+            onDelete={() => deleteField(field)}
           />
         ))}
 
-        <AddFieldDropdown onSelect={handleAddField} />
+        <AddFieldDropdown onSelect={addField} />
       </form>
     </div>
   );
