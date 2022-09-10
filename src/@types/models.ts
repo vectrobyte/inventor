@@ -1,7 +1,9 @@
+export type FieldType = 'TEXT' | 'NUMBER' | 'DATE' | 'CHECKBOX';
+
 export type Field = {
   id: string;
   name: string;
-  type: 'TEXT' | 'NUMBER' | 'DATE' | 'CHECKBOX';
+  type: FieldType;
 };
 
 export type ProductField = {

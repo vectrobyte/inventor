@@ -7,11 +7,11 @@ export type SelectOption<T = any> = {
   value: T;
 };
 
-type CheckboxProps = FormControl<string> & {
+type SelectProps = FormControl<string> & {
   options: SelectOption[];
 };
 
-const Checkbox: React.FC<CheckboxProps> = ({ label, value, placeholder, options, onChange }) => {
+const Select: React.FC<SelectProps> = ({ label, value, placeholder, options, onChange }) => {
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     onChange(e.target.value);
   };
@@ -24,9 +24,7 @@ const Checkbox: React.FC<CheckboxProps> = ({ label, value, placeholder, options,
         className="rounded w-full shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         onChange={handleChange}
       >
-        <option selected disabled>
-          {placeholder}
-        </option>
+        <option disabled>{placeholder}</option>
         {options.map((option, key) => (
           <option key={`${option.label}-${key}`} value={option.value}>
             {option.label}
@@ -37,4 +35,4 @@ const Checkbox: React.FC<CheckboxProps> = ({ label, value, placeholder, options,
   );
 };
 
-export default Checkbox;
+export default Select;
