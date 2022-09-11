@@ -37,7 +37,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ model, product }) => {
         <CrossButton onClick={() => dropProduct(product)} />
       </div>
 
-      <form className="space-y-4 p-4 md:p-6 lg:p-8" action="#">
+      <form className="space-y-4 p-8" action="#">
         {Object.keys(formData).map((fieldKey, key) => (
           <InputRenderer
             key={`${fieldKey}-${key}`}

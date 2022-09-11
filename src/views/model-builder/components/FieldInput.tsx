@@ -6,6 +6,7 @@ import { SelectOption } from '../../../components/form/Select';
 
 type FieldInputProps = {
   field: Field;
+  droppable: boolean;
   onUpdate(field: Field): void;
   onDelete(): void;
 };
@@ -31,7 +32,7 @@ export const FIELD_OPTIONS: FieldOption[] = [
   },
 ];
 
-const FieldInput: React.FC<FieldInputProps> = ({ field, onUpdate, onDelete }) => {
+const FieldInput: React.FC<FieldInputProps> = ({ field, droppable, onUpdate, onDelete }) => {
   const title = useMemo(() => {
     const found = FIELD_OPTIONS.find((option) => {
       return option.value === field.type;
@@ -55,8 +56,8 @@ const FieldInput: React.FC<FieldInputProps> = ({ field, onUpdate, onDelete }) =>
   };
 
   return (
-    <div className="flex mb-4 items-center">
-      <div className="flex mr-1">
+    <div className="relative flex mb-4 items-center">
+      <div className="flex w-full">
         <input
           type="text"
           value={field.name}
@@ -65,6 +66,7 @@ const FieldInput: React.FC<FieldInputProps> = ({ field, onUpdate, onDelete }) =>
           style={{ width: 'calc(100% - 115px)' }}
           onChange={handleFieldNameChange}
         />
+
         <select
           defaultValue={field.type}
           className="bg-gray-700 w-[115px] border border-gray-300 text-white text-sm rounded-r border-l-gray-600 border-l-2 border-r-4 border-r-gray-700 block w-full p-2.5 truncate"
@@ -82,7 +84,11 @@ const FieldInput: React.FC<FieldInputProps> = ({ field, onUpdate, onDelete }) =>
         </select>
       </div>
 
-      <CrossButton onClick={onDelete} />
+      {droppable && (
+        <div className="absolute -right-5">
+          <CrossButton onClick={onDelete} />
+        </div>
+      )}
     </div>
   );
 };

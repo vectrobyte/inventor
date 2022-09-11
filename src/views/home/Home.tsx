@@ -37,6 +37,7 @@ const Home: React.FC<HomeProps> = () => {
               </div>
             )
         )}
+
         <div className="p-8 w-[450px]">
           <AddProductDropdown models={models} onSelect={handleSelectModel} />
         </div>

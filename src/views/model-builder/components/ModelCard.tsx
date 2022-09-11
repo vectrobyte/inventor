@@ -34,12 +34,13 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, onDelete }) => {
         <CrossButton onClick={() => onDelete(model)} />
       </div>
 
-      <form className="space-y-4 p-4 md:p-6 lg:p-8" action="#">
+      <form className="space-y-4 p-8">
         <TextField
           label="Model Name"
           value={model.title}
           onChange={(val) => handleUpdateModel('title', val)}
         />
+
         <Select
           label="Title Field"
           value={model.title_field}
@@ -55,6 +56,7 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, onDelete }) => {
             key={`${field.id}-${key}`}
             field={field}
             onUpdate={updateField}
+            droppable={field.id !== model.title_field}
             onDelete={() => deleteField(field)}
           />
         ))}
