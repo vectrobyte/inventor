@@ -33,7 +33,7 @@ const ModelProducts: React.FC<ModelProducts> = () => {
 
     if (!targetModel) {
       navigate('/home');
-      toast(<WarningToast>Product not found!</WarningToast>, WARNING_TOAST_OPTIONS);
+      toast(<WarningToast>Model not found!</WarningToast>, WARNING_TOAST_OPTIONS);
       return;
     }
 
