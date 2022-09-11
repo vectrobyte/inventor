@@ -36,7 +36,7 @@ const Home: React.FC<HomeProps> = () => {
   return (
     <div className="home-page w-full mb-40">
       {!properModels || !properModels.length ? (
-        <div className="my-20 text-center">
+        <div className="my-20 p-4 text-center">
           <h5 className="text-lg font-semibold mb-1">No models available!</h5>
 
           <p className="text-gray-600 text-sm">
