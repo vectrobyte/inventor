@@ -36,7 +36,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ model, product }) => {
   return (
     <div className="bg-white rounded-lg border border-gray-200 shadow-md">
       <div className="bg-gray-800 py-4 px-8 min-h-[56px] rounded-t-lg text-white flex items-center justify-between">
-        <span>{`${model.title} - ${formData[model.title_field] || 'No Title'}`}</span>
+        <span>{`${model.title || model.id} - ${formData[model.title_field] || 'No Title'}`}</span>
         <CrossButton onClick={() => dropProduct(product)} />
       </div>
 
