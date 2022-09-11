@@ -1,10 +1,12 @@
+import { omit } from 'lodash';
+
 import { Field, FieldType, Model } from '../../@types';
 import { uid } from '../../common/helpers';
 import { useModels } from './useModels';
 
 export const useModelFields = (model: Model) => {
   const { fields } = model;
-  const { updateModel } = useModels();
+  const { updateModel, models, setModels } = useModels();
 
   const handleUpdateModel = (key: keyof Model, value: any) => {
     updateModel({
@@ -31,10 +33,18 @@ export const useModelFields = (model: Model) => {
     );
   };
 
-  const deleteField = (updatedField: Field) => {
-    handleUpdateModel(
-      'fields',
-      fields.filter((field) => updatedField.id !== field.id)
+  const deleteField = (deletedField: Field) => {
+    setModels(
+      models.map((model) => ({
+        ...model,
+        fields: fields.filter((field) => deletedField.id !== field.id),
+        products: model.products.map((product) => {
+          return {
+            ...product,
+            formData: omit(product.formData, deletedField.id),
+          };
+        }),
+      }))
     );
   };
 

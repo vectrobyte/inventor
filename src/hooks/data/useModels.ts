@@ -76,5 +76,6 @@ export const useModels = () => {
     addNewModel,
     updateModel,
     dropModel,
+    setModels,
   };
 };
