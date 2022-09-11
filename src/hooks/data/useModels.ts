@@ -39,15 +39,17 @@ export const useModels = () => {
   };
 
   const addNewModel = () => {
+    const titleUid = uid();
+
     setModels([
       ...models,
       {
         id: uid(),
         title: '',
-        title_field: 'TEXT',
+        title_field: titleUid,
         fields: [
           {
-            id: uid(),
+            id: titleUid,
             name: 'Title',
             type: 'TEXT',
           },
