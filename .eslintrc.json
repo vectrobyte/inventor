@@ -30,7 +30,13 @@
     "no-console": "warn",
     "no-unused-vars": "warn",
     "prettier/prettier": [
-      "error"
+      "error", {
+        "printWidth": 100,
+        "singleQuote": true,
+        "trailingComma": "es5",
+        "tabWidth": 2,
+        "endOfLine": "auto"
+      }
     ],
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
