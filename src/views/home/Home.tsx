@@ -46,7 +46,7 @@ const Home: React.FC<HomeProps> = () => {
             </Link>{' '}
             first.
             <br />
-            Note: A model needs to have a name and a field before creating new products.
+            Note: A model needs to have a name and a field(s) before creating new products.
           </p>
         </div>
       ) : (
