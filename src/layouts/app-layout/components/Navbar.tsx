@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, matchPath, useLocation } from 'react-router-dom';
 
+import inventorIcon from '../../../assets/inventor.png';
 import { useModels } from '../../../hooks/data/useModels';
 import { useIsDesktop } from '../../../hooks/useIsDesktop';
 
@@ -40,7 +41,8 @@ const Navbar: React.FC<NavbarProps> = () => {
   return (
     <nav className="border-gray-200 px-2 sm:px-4 py-2.5 bg-gray-900">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
-        <Link to="/home" className="flex items-baseline">
+        <Link to="/home" className="flex items-center">
+          <img src={inventorIcon} className="mr-2 h-5" alt="" />
           <p className="text-xl font-semibold whitespace-nowrap text-white">Inventor</p>
         </Link>
         <button
