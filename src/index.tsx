@@ -8,8 +8,11 @@ import ScrollToTop from './components/ScrollToTop';
 import { Providers } from './context';
 import reportWebVitals from './reportWebVitals';
 import AppRouter from './router/AppRouter';
+import registerServiceWorker from './serviceWorker';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+
+registerServiceWorker();
 
 root.render(
   <React.StrictMode>
