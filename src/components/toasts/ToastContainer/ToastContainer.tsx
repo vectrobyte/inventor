@@ -17,7 +17,11 @@ const contextClass = {
   dark: 'bg-white-600 bg-dark-800 font-gray-300',
 };
 
-const CloseIcon = () => <CrossButton />;
+const CloseIcon = () => (
+  <div>
+    <CrossButton />
+  </div>
+);
 
 const ToastContainerWrapper: React.FC = () => {
   return (
@@ -32,7 +36,7 @@ const ToastContainerWrapper: React.FC = () => {
       toastStyle={{
         boxShadow: '0px 0px 20px 0px rgb(0 0 0 / 18%)',
       }}
-      bodyClassName={() => 'flex-1'}
+      bodyClassName={() => 'flex items-start flex-1'}
     />
   );
 };

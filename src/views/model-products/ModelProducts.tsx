@@ -3,10 +3,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { Model, Uid } from '../../@types';
-import { TOAST_OPTIONS } from '../../common/configs';
 import Button from '../../components/buttons/Button';
 import GridView, { GridItem } from '../../components/GridView';
-import WarningToast from '../../components/toasts/WarningToast/WarningToast';
+import WarningToast, {
+  WARNING_TOAST_OPTIONS,
+} from '../../components/toasts/WarningToast/WarningToast';
 import { useModelProducts } from '../../hooks/data/useModelProducts';
 import { useModels } from '../../hooks/data/useModels';
 import ProductCard from './components/ProductCard';
@@ -23,7 +24,7 @@ const ModelProducts: React.FC<ModelProducts> = () => {
 
   useEffect(() => {
     if (!modelId || !modelIds.includes(modelId)) {
-      toast(<WarningToast>Invalid Model ID Provided!</WarningToast>, TOAST_OPTIONS);
+      toast(<WarningToast>Invalid Model ID Provided!</WarningToast>, WARNING_TOAST_OPTIONS);
       navigate('/home');
       return;
     }
@@ -32,7 +33,7 @@ const ModelProducts: React.FC<ModelProducts> = () => {
 
     if (!targetModel) {
       navigate('/home');
-      toast(<WarningToast>Product not found!</WarningToast>, TOAST_OPTIONS);
+      toast(<WarningToast>Product not found!</WarningToast>, WARNING_TOAST_OPTIONS);
       return;
     }
 
