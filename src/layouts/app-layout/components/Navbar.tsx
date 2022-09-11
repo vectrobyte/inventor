@@ -70,11 +70,11 @@ const Navbar: React.FC<NavbarProps> = () => {
         </button>
         <div
           id="navbar-default"
-          className={`${
-            menuOpen ? 'h-full opacity-100' : 'h-0 opacity-0'
-          } w-full md:block md:w-auto transition-spacing transition-opacity`}
+          className={`w-full md:block md:w-auto transition-all transition-opacity duration-300 ${
+            menuOpen ? 'h-auto opacity-100' : 'h-0 opacity-0 overflow-hidden'
+          }`}
         >
-          <ul className="flex flex-col p-4 mt-4 rounded-lg border md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white bg-gray-800 md:bg-gray-900 border-gray-700">
+          <ul className="flex flex-col p-4 m-2 rounded-lg border md:flex-row md:space-x-8 md:m-0 md:text-sm md:font-medium md:border-0 md:bg-white bg-gray-800 md:bg-gray-900 border-gray-700">
             <MenuItem href="/home" title="Home" />
             {models.map(
               (model, key) =>
