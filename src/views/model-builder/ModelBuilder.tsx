@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AddButton from '../../components/buttons/AddButton';
+import Button from '../../components/buttons/Button';
 import { useModels } from '../../hooks/data/useModels';
 import ModelCard from './components/ModelCard';
 
@@ -8,10 +8,6 @@ type ModelBuilderProps = React.HTMLAttributes<HTMLElement>;
 
 const ModelBuilder: React.FC<ModelBuilderProps> = () => {
   const { models, dropModel, addNewModel } = useModels();
-
-  const handleAddNewModel = () => {
-    addNewModel();
-  };
 
   return (
     <div className="model-builder-page w-full mb-40">
@@ -21,9 +17,11 @@ const ModelBuilder: React.FC<ModelBuilderProps> = () => {
             <ModelCard model={model} onDelete={dropModel} />
           </div>
         ))}
-      </div>
 
-      <AddButton onClick={handleAddNewModel} />
+        <div className="p-8 w-[450px]">
+          <Button onClick={addNewModel}>Add New Model</Button>
+        </div>
+      </div>
     </div>
   );
 };

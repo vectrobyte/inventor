@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { Uid } from '../../@types';
-import AddButton from '../../components/buttons/AddButton';
+import Button from '../../components/buttons/Button';
 import { useModels } from '../../hooks/data/useModels';
 import { useProducts } from '../../hooks/data/useProducts';
 import ProductCard from './components/ProductCard';
@@ -33,9 +33,11 @@ const ModelProducts: React.FC<ModelProducts> = () => {
             <ProductCard model={model} product={product} />
           </div>
         ))}
-      </div>
 
-      <AddButton onClick={addNewProduct} />
+        <div className="p-8 w-[450px]">
+          <Button onClick={addNewProduct}>Add New {model.title || 'Product'}</Button>
+        </div>
+      </div>
     </div>
   );
 };
