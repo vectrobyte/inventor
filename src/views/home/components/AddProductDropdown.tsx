@@ -17,7 +17,7 @@ const AddProductDropdown: React.FC<AddProductDropdownProps> = ({ models, onSelec
 
   return (
     <Dropdown
-      label="Add New Model"
+      label="Add New Product"
       options={models}
       optionMapper={mapOptions}
       onSelect={handleSelect}
