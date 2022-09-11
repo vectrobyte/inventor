@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Model } from '../../@types';
 import { uid } from '../../common/helpers';
+import GridView, { GridItem } from '../../components/GridView';
 import { generateDefaultProductFields } from '../../hooks/data/useModelProducts';
 import { useModels } from '../../hooks/data/useModels';
 import ProductCard from '../model-products/components/ProductCard';
@@ -27,21 +28,20 @@ const Home: React.FC<HomeProps> = () => {
   };
 
   return (
-    <div className="model-builder-page w-full mb-40">
-      <div className="-mx-8 flex flex-wrap">
+    <div className="home-page w-full mb-40">
+      <GridView>
         {allProducts.map(
           ({ model, ...product }, key) =>
             model && (
-              <div key={`${product.id}-${key}`} className="p-8 w-[450px]">
+              <GridItem key={`${product.id}-${key}`}>
                 <ProductCard model={model} product={product} />
-              </div>
+              </GridItem>
             )
         )}
-
-        <div className="p-8 w-[450px]">
+        <GridItem>
           <AddProductDropdown models={models} onSelect={handleSelectModel} />
-        </div>
-      </div>
+        </GridItem>
+      </GridView>
     </div>
   );
 };

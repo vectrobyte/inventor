@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Button from '../../components/buttons/Button';
+import GridView, { GridItem } from '../../components/GridView';
 import { useModels } from '../../hooks/data/useModels';
 import ModelCard from './components/ModelCard';
 
@@ -11,17 +12,17 @@ const ModelBuilder: React.FC<ModelBuilderProps> = () => {
 
   return (
     <div className="model-builder-page w-full mb-40">
-      <div className="-mx-8 flex flex-wrap">
+      <GridView>
         {models.map((model, key) => (
-          <div key={`${model.id}-${key}`} className="p-8 w-[450px]">
+          <GridItem key={`${model.id}-${key}`}>
             <ModelCard model={model} onDelete={dropModel} />
-          </div>
+          </GridItem>
         ))}
 
-        <div className="p-8 w-[450px]">
+        <GridItem>
           <Button onClick={addNewModel}>Add New Model</Button>
-        </div>
-      </div>
+        </GridItem>
+      </GridView>
     </div>
   );
 };

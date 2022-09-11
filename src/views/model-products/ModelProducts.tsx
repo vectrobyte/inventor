@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import { Uid } from '../../@types';
 import Button from '../../components/buttons/Button';
+import GridView, { GridItem } from '../../components/GridView';
 import { useModelProducts } from '../../hooks/data/useModelProducts';
 import { useModels } from '../../hooks/data/useModels';
 import ProductCard from './components/ProductCard';
@@ -26,18 +27,17 @@ const ModelProducts: React.FC<ModelProducts> = () => {
   }
 
   return (
-    <div className="model-builder-page w-full mb-40">
-      <div className="-mx-8 flex flex-wrap">
+    <div className="model-products-page w-full mb-40">
+      <GridView>
         {products.map((product, key) => (
-          <div key={`${product.id}-${key}`} className="p-8 w-[450px]">
+          <GridItem key={`${product.id}-${key}`}>
             <ProductCard model={model} product={product} />
-          </div>
+          </GridItem>
         ))}
-
-        <div className="p-8 w-[450px]">
+        <GridItem>
           <Button onClick={addNewProduct}>Add New {model.title || 'Product'}</Button>
-        </div>
-      </div>
+        </GridItem>
+      </GridView>
     </div>
   );
 };
