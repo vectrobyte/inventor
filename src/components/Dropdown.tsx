@@ -20,8 +20,8 @@ const Dropdown: React.FC<DropdownProps> = ({ label, options, optionMapper, onSel
   return (
     <div className="relative">
       <Button onClick={() => setExpanded(!expanded)}>
-        <div className="w-full flex items-center justify-between">
-          <span>{label}</span>
+        <div className="w-full flex items-center justify-center">
+          <p className="mr-2">{label}</p>
           <svg
             className="ml-2 w-4 h-4"
             fill="none"
