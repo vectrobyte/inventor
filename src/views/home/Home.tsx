@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Model } from '../../@types';
@@ -13,6 +13,11 @@ type HomeProps = React.HTMLAttributes<HTMLElement>;
 
 const Home: React.FC<HomeProps> = () => {
   const { allProducts, models, updateModel } = useModels();
+
+  const properModels = useMemo(
+    () => models.filter((model) => model.title && model.fields.length),
+    [models]
+  );
 
   const handleSelectModel = (model: Model) => {
     updateModel({
@@ -30,9 +35,9 @@ const Home: React.FC<HomeProps> = () => {
 
   return (
     <div className="home-page w-full mb-40">
-      {!models || !models.length ? (
+      {!properModels || !properModels.length ? (
         <div className="my-20 text-center">
-          <h5 className="text-lg font-semibold mb-1">No models available.</h5>
+          <h5 className="text-lg font-semibold mb-1">No models available!</h5>
 
           <p className="text-gray-600 text-sm">
             Please create models from{' '}
@@ -40,6 +45,8 @@ const Home: React.FC<HomeProps> = () => {
               Model Builder
             </Link>{' '}
             first.
+            <br />
+            Note: A model needs to have a name and a field before creating new products.
           </p>
         </div>
       ) : (
@@ -53,7 +60,7 @@ const Home: React.FC<HomeProps> = () => {
               )
           )}
           <GridItem>
-            <AddProductDropdown models={models} onSelect={handleSelectModel} />
+            <AddProductDropdown models={properModels} onSelect={handleSelectModel} />
           </GridItem>
         </GridView>
       )}

@@ -62,6 +62,11 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, onDelete }) => {
         ))}
 
         <AddFieldDropdown onSelect={addField} />
+
+        <p className="text-sm text-gray-600">
+          Note: A model will not be available to create new products unless it has a name and
+          property field(s).
+        </p>
       </form>
     </div>
   );

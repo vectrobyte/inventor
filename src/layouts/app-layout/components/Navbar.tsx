@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Link, matchPath, useLocation } from 'react-router-dom';
 
 import inventorIcon from '../../../assets/inventor.png';
@@ -27,6 +27,11 @@ const MenuItem: React.FC<{ href: string; title: string }> = ({ href, title }) =>
 const Navbar: React.FC<NavbarProps> = () => {
   const [menuOpen, setMenuOpen] = useState(true);
   const { models } = useModels();
+
+  const properModels = useMemo(
+    () => models.filter((model) => model.title && model.fields.length),
+    [models]
+  );
 
   const isDesktop = useIsDesktop();
 
@@ -76,12 +81,9 @@ const Navbar: React.FC<NavbarProps> = () => {
         >
           <ul className="flex flex-col p-4 m-2 rounded-lg border md:flex-row md:space-x-8 md:m-0 md:text-sm md:font-medium md:border-0 md:bg-white bg-gray-800 md:bg-gray-900 border-gray-700">
             <MenuItem href="/home" title="Home" />
-            {models.map(
-              (model, key) =>
-                model.title && (
-                  <MenuItem key={key} href={`/model/${model.id}`} title={model.title} />
-                )
-            )}
+            {properModels.map((model, key) => (
+              <MenuItem key={key} href={`/model/${model.id}`} title={model.title} />
+            ))}
             <MenuItem href="/model-builder" title="Model Builder" />
           </ul>
         </div>
