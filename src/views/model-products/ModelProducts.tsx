@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-import { Uid } from '../../@types';
+import { Model, Uid } from '../../@types';
+import { TOAST_OPTIONS } from '../../common/configs';
 import Button from '../../components/buttons/Button';
 import GridView, { GridItem } from '../../components/GridView';
+import WarningToast from '../../components/toasts/WarningToast/WarningToast';
 import { useModelProducts } from '../../hooks/data/useModelProducts';
 import { useModels } from '../../hooks/data/useModels';
 import ProductCard from './components/ProductCard';
@@ -13,18 +16,28 @@ type ModelProducts = React.HTMLAttributes<HTMLElement>;
 const ModelProducts: React.FC<ModelProducts> = () => {
   const navigate = useNavigate();
   const { modelIds, getModelById } = useModels();
-
-  const params = useParams<{ modelId: Uid }>();
-
-  const model = getModelById(params.modelId as string);
+  const { modelId } = useParams<{ modelId: Uid }>();
+  const [model, setModel] = useState<Model>({ id: modelId } as Model);
 
   const { products, addNewProduct } = useModelProducts(model);
 
-  if (!modelIds.includes(params.modelId as string)) {
-    navigate('/home');
+  useEffect(() => {
+    if (!modelId || !modelIds.includes(modelId)) {
+      toast(<WarningToast>Invalid Model ID Provided!</WarningToast>, TOAST_OPTIONS);
+      navigate('/home');
+      return;
+    }
 
-    return <></>;
-  }
+    const targetModel = getModelById(modelId as string);
+
+    if (!targetModel) {
+      navigate('/home');
+      toast(<WarningToast>Product not found!</WarningToast>, TOAST_OPTIONS);
+      return;
+    }
+
+    setModel(targetModel);
+  }, [getModelById, navigate, modelId, modelIds]);
 
   return (
     <div className="model-products-page w-full mb-40">
