@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Model } from '../../@types';
 import { uid } from '../../common/helpers';
+import { generateDefaultProductFields } from '../../hooks/data/useModelProducts';
 import { useModels } from '../../hooks/data/useModels';
-import { generateDefaultProductFields } from '../../hooks/data/useProducts';
 import ProductCard from '../model-products/components/ProductCard';
 import AddProductDropdown from './components/AddProductDropdown';
 

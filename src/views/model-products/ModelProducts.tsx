@@ -3,8 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import { Uid } from '../../@types';
 import Button from '../../components/buttons/Button';
+import { useModelProducts } from '../../hooks/data/useModelProducts';
 import { useModels } from '../../hooks/data/useModels';
-import { useProducts } from '../../hooks/data/useProducts';
 import ProductCard from './components/ProductCard';
 
 type ModelProducts = React.HTMLAttributes<HTMLElement>;
@@ -17,7 +17,7 @@ const ModelProducts: React.FC<ModelProducts> = () => {
 
   const model = getModelById(params.modelId as string);
 
-  const { products, addNewProduct } = useProducts(model);
+  const { products, addNewProduct } = useModelProducts(model);
 
   if (!modelIds.includes(params.modelId as string)) {
     navigate('/home');

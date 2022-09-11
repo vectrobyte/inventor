@@ -13,7 +13,7 @@ export const generateDefaultProductFields = (model: Model) => {
   }, {} as Product['formData']);
 };
 
-export const useProducts = (model: Model) => {
+export const useModelProducts = (model: Model) => {
   const { updateModel } = useModels();
 
   const products = useMemo(() => (model && model.products) || [], [model]);

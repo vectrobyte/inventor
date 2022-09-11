@@ -2,7 +2,10 @@ import React, { useMemo } from 'react';
 
 import { Field, Model, Product } from '../../../@types';
 import CrossButton from '../../../components/buttons/CrossButton';
-import { generateDefaultProductFields, useProducts } from '../../../hooks/data/useProducts';
+import {
+  generateDefaultProductFields,
+  useModelProducts,
+} from '../../../hooks/data/useModelProducts';
 import InputRenderer from './InputRenderer';
 
 type ProductCardProps = React.HTMLAttributes<HTMLElement> & {
@@ -11,7 +14,7 @@ type ProductCardProps = React.HTMLAttributes<HTMLElement> & {
 };
 
 const ProductCard: React.FC<ProductCardProps> = ({ model, product }) => {
-  const { updateProduct, dropProduct } = useProducts(model);
+  const { updateProduct, dropProduct } = useModelProducts(model);
 
   const formData = useMemo(() => {
     return {
