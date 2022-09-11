@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react';
 
-import { Model } from '../../../@types';
-import CrossButton from '../../../components/buttons/CrossButton';
-import Select, { SelectOption } from '../../../components/form/Select';
-import TextField from '../../../components/form/TextField';
-import { useModelFields } from '../../../hooks/data/useModelFields';
-import AddFieldDropdown from './AddFieldDropdown';
-import FieldInput from './FieldInput';
+import { Model } from '../../../../@types';
+import CrossButton from '../../../../components/buttons/CrossButton';
+import Select, { SelectOption } from '../../../../components/form/Select';
+import TextField from '../../../../components/form/TextField';
+import { useModelFields } from '../../../../hooks/data/useModelFields';
+import AddFieldDropdown from './components/AddFieldDropdown';
+import FieldInput from './components/FieldInput';
 
 type ModelCardProps = React.HTMLAttributes<HTMLElement> & {
   model: Model;

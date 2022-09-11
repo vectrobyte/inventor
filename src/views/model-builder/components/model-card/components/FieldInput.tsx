@@ -1,8 +1,8 @@
 import React, { ChangeEvent, useMemo } from 'react';
 
-import { Field, FieldType } from '../../../@types';
-import CrossButton from '../../../components/buttons/CrossButton';
-import { SelectOption } from '../../../components/form/Select';
+import { Field, FieldType } from '../../../../../@types';
+import CrossButton from '../../../../../components/buttons/CrossButton';
+import { SelectOption } from '../../../../../components/form/Select';
 
 type FieldInputProps = {
   field: Field;

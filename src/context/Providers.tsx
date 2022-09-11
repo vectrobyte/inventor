@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ToastContainerWrapper from '../components/toasts/ToastContainer/ToastContainer';
+import ToastContainerWrapper from '../components/toasts/ToastContainer';
 import { StoreProvider } from './store/StoreProvider';
 
 type ProvidersProps = React.HTMLAttributes<HTMLElement>;

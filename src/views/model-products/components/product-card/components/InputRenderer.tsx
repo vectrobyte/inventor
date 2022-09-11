@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react';
 
-import { Field, FormControl } from '../../../@types';
-import Checkbox from '../../../components/form/Checkbox';
-import DateField from '../../../components/form/DateField';
-import NumberField from '../../../components/form/NumberField';
-import TextField from '../../../components/form/TextField';
+import { Field, FormControl } from '../../../../../@types';
+import Checkbox from '../../../../../components/form/Checkbox';
+import DateField from '../../../../../components/form/DateField';
+import NumberField from '../../../../../components/form/NumberField';
+import TextField from '../../../../../components/form/TextField';
 
 type InputRendererProps = Omit<FormControl<any>, 'label'> & {
   fields: Field[];

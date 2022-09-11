@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react';
 
-import { Field, Model, Product } from '../../../@types';
-import CrossButton from '../../../components/buttons/CrossButton';
+import { Field, Model, Product } from '../../../../@types';
+import CrossButton from '../../../../components/buttons/CrossButton';
 import {
   generateDefaultProductFields,
   useModelProducts,
-} from '../../../hooks/data/useModelProducts';
-import InputRenderer from './InputRenderer';
+} from '../../../../hooks/data/useModelProducts';
+import InputRenderer from './components/InputRenderer';
 
 type ProductCardProps = React.HTMLAttributes<HTMLElement> & {
   model: Model;

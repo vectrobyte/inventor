@@ -1,7 +1,7 @@
 import React from 'react';
 import { ToastOptions } from 'react-toastify/dist/types';
 
-import { TOAST_OPTIONS } from '../../../common/configs';
+import { TOAST_OPTIONS } from '../../common/configs';
 
 type SuccessToastProps = React.HTMLAttributes<HTMLElement>;
 

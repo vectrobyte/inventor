@@ -6,7 +6,7 @@ import { uid } from '../../common/helpers';
 import GridView, { GridItem } from '../../components/GridView';
 import { generateDefaultProductFields } from '../../hooks/data/useModelProducts';
 import { useModels } from '../../hooks/data/useModels';
-import ProductCard from '../model-products/components/ProductCard';
+import ProductCard from '../model-products/components/product-card/ProductCard';
 import AddProductDropdown from './components/AddProductDropdown';
 
 type HomeProps = React.HTMLAttributes<HTMLElement>;

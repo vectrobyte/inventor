@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { FieldType } from '../../../@types';
-import Dropdown from '../../../components/Dropdown';
+import { FieldType } from '../../../../../@types';
+import Dropdown from '../../../../../components/Dropdown';
 import { FIELD_OPTIONS, FieldOption } from './FieldInput';
 
 type AddFieldDropdownProps = {

@@ -3,7 +3,7 @@ import React from 'react';
 import Button from '../../components/buttons/Button';
 import GridView, { GridItem } from '../../components/GridView';
 import { useModels } from '../../hooks/data/useModels';
-import ModelCard from './components/ModelCard';
+import ModelCard from './components/model-card/ModelCard';
 
 type ModelBuilderProps = React.HTMLAttributes<HTMLElement>;
 

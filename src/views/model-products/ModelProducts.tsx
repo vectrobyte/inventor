@@ -5,12 +5,10 @@ import { toast } from 'react-toastify';
 import { Model, Uid } from '../../@types';
 import Button from '../../components/buttons/Button';
 import GridView, { GridItem } from '../../components/GridView';
-import WarningToast, {
-  WARNING_TOAST_OPTIONS,
-} from '../../components/toasts/WarningToast/WarningToast';
+import WarningToast, { WARNING_TOAST_OPTIONS } from '../../components/toasts/WarningToast';
 import { useModelProducts } from '../../hooks/data/useModelProducts';
 import { useModels } from '../../hooks/data/useModels';
-import ProductCard from './components/ProductCard';
+import ProductCard from './components/product-card/ProductCard';
 
 type ModelProducts = React.HTMLAttributes<HTMLElement>;
 

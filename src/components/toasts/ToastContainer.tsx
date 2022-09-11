@@ -2,7 +2,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { Slide, ToastContainer } from 'react-toastify';
 
-import CrossButton from '../../buttons/CrossButton';
+import CrossButton from '../buttons/CrossButton';
 
 /**
  * Use this to customize the different colors for the different toast types
