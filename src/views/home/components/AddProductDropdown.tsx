@@ -13,7 +13,7 @@ const AddProductDropdown: React.FC<AddProductDropdownProps> = ({ models, onSelec
     onSelect(model);
   };
 
-  const mapOptions = (model: Model) => model.title;
+  const mapOptions = (model: Model) => model.title || model.id;
 
   return (
     <Dropdown

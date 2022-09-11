@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Model } from '../../@types';
 import { uid } from '../../common/helpers';
@@ -29,19 +30,33 @@ const Home: React.FC<HomeProps> = () => {
 
   return (
     <div className="home-page w-full mb-40">
-      <GridView>
-        {allProducts.map(
-          ({ model, ...product }, key) =>
-            model && (
-              <GridItem key={`${product.id}-${key}`}>
-                <ProductCard model={model} product={product} />
-              </GridItem>
-            )
-        )}
-        <GridItem>
-          <AddProductDropdown models={models} onSelect={handleSelectModel} />
-        </GridItem>
-      </GridView>
+      {!models || !models.length ? (
+        <div className="my-20 text-center">
+          <h5 className="text-lg font-semibold mb-1">No models available.</h5>
+
+          <p className="text-gray-600 text-sm">
+            Please create models from{' '}
+            <Link to="/model-builder" className="text-purple-700 hover:underline">
+              Model Builder
+            </Link>{' '}
+            first.
+          </p>
+        </div>
+      ) : (
+        <GridView>
+          {allProducts.map(
+            ({ model, ...product }, key) =>
+              model && (
+                <GridItem key={`${product.id}-${key}`}>
+                  <ProductCard model={model} product={product} />
+                </GridItem>
+              )
+          )}
+          <GridItem>
+            <AddProductDropdown models={models} onSelect={handleSelectModel} />
+          </GridItem>
+        </GridView>
+      )}
     </div>
   );
 };

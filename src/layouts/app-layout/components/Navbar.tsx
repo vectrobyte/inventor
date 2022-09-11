@@ -16,7 +16,7 @@ const MenuItem: React.FC<{ href: string; title: string }> = ({ href, title }) =>
     <li>
       <Link
         to={href}
-        className={`block py-2 pr-4 pl-3 md:p-0 ${isActive ? 'text-blue-300' : 'text-gray-200'}`}
+        className={`block py-2 pr-4 pl-3 md:p-0 ${isActive ? 'text-purple-300' : 'text-gray-200'}`}
       >
         {title}
       </Link>
