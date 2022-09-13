@@ -3,7 +3,7 @@ import React from 'react';
 type GridItemProps = React.HTMLAttributes<HTMLElement>;
 
 export const GridItem: React.FC<GridItemProps> = ({ children }) => {
-  return <div className="p-4 md:p-6 w-full md:w-1/2 lg:w-[450px]">{children}</div>;
+  return <div className="p-4 md:p-6 w-full md:w-1/2 lg:w-1/3 xl:w-1/4">{children}</div>;
 };
 
 type GridViewProps = React.HTMLAttributes<HTMLElement>;
